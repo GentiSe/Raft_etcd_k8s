@@ -4,18 +4,14 @@ public class Program
 {
     public static void Main()
     {
-
-        // 3-node cluster
         var node1 = new RaftNode(1);
         var node2 = new RaftNode(2);
         var node3 = new RaftNode(3);
 
-        // peers = (host, port)
         node1.Peers = new[] { ("localhost", 5002), ("localhost", 5003) };
         node2.Peers = new[] { ("localhost", 5001), ("localhost", 5003) };
         node3.Peers = new[] { ("localhost", 5001), ("localhost", 5002) };
 
-        // start nodes
         _ = node1.RunAsync(5001);
         _ = node2.RunAsync(5002);
         _ = node3.RunAsync(5003);
